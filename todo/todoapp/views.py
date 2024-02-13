@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import task
+from .models import *
+from .forms import *
+
 def home(request):
     tasks = task.objects.all()
-    context = {'tasks': tasks}     
+    
+    form = TaskForm()
+    context = {'tasks': tasks,'form': form}     
     return render(request,'home.html',context)
 
 def tasklist(request):

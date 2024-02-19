@@ -16,9 +16,22 @@ def tasklist(request):
     context = {'tasks': tasks,'form': form}  
     return render(request,'task.html',context)
 
-def edit(request, pk):
-    task = task.objects.get(id=pk)
-    return render(request,'edittask.html') 
+def edit_task(request, pk):
+    task_instance  = task.objects.get(id=pk)
+    form = TaskForm(instance=task_instance)
+    if request.method == 'POST':
+        form = TaskForm(request.POST,instance=task_instance)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    
+    context = {'form':form}
+    return render(request,'edittask.html',context) 
+
+def Delete(request,pk):
+    task_instance  = task.objects.get(id=pk)
+    task_instance.delete()
+    return render(request,'task.html')
 
 def timer(request):
     return render(request,'timer.html')

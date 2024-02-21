@@ -31,7 +31,7 @@ def edit_task(request, pk):
 def Delete(request,pk):
     task_instance  = task.objects.get(id=pk)
     task_instance.delete()
-    return render(request,'task.html')
+    return redirect('/')
 
 def timer(request):
     return render(request,'timer.html')

@@ -29,9 +29,12 @@ def edit_task(request, pk):
     return render(request,'edittask.html',context) 
 
 def Delete(request,pk):
-    task_instance  = task.objects.get(id=pk)
-    task_instance.delete()
-    return redirect('/')
+    item  = task.objects.get(id=pk)
+    if request.method == 'POST':
+        item.delete()
+        return redirect('/')
+    context = {'item':item}
+    return render(request,'delete.html',context)
 
 def timer(request):
     return render(request,'timer.html')

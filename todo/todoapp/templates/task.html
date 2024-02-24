@@ -11,7 +11,7 @@
   <style>
 
     body{
-      background-color: #638CB8;
+      background-color: #396F4B;
     }
 
     input{
@@ -39,7 +39,7 @@
     }
 
     .item-row{
-      background-color: #906abd;
+      background-color: #232824;
       margin: 10px;
       padding: 20px;
       border-radius: 3px;
@@ -50,7 +50,7 @@
 
     .btn-danger{
       background-color: #ffae19;
-      border-color: #e59400;
+      border-color: #e6e600;
     }
 
   </style>
@@ -83,7 +83,7 @@
   {% for task in tasks %}
     <div class = 'item-row'>
       <a class = 'btn btn-sm btn-info' href="{% url 'edit_task' task.id %}">Edit</a>
-      <a class = 'btn btn-sm btn-info' href="{% url 'delete' task.id %}">Delete</a>
+      <a class = 'btn btn-sm btn-danger' href="{% url 'delete' task.id %}">Delete</a>
       {% if task.complete == True%}
       <strike> {{task}}</task>
       {% else %}
